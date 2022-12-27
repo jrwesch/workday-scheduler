@@ -1,6 +1,27 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+$(document).ready(function () {
+  // handles info from scheduled tasks when put into local storage
+  let itemsArray = []
+  localStorage.setItem('items', JSON.stringify(itemsArray));
+  const data = JSON.parse(localStorage.getItem('items'));
+  
+  // gets current date from Day.js and displays it
+  var todaysDate = dayjs().format('MMMM-D-YYYY');
+  var displayDate = document.getElementById('currentDay');
+  displayDate.innerHTML = todaysDate;
+  let currentHour = dayjs().format('HH');
+
+  // adds listener for click events on save button, saves to local storage
+  $(".saveBtn").click(function (event) {
+      event.preventDefault();
+      itemsArray.push(input.value);
+      localStorage.setItem('items', JSON.stringify(itemsArray));
+      console.log(itemsArray);
+      
+  });
 $(function () {
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
