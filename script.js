@@ -1,14 +1,33 @@
 $(document).ready(function () {
-    // handles info from scheduled tasks when put into local storage
-    let itemsArray = []
-    localStorage.setItem('items', JSON.stringify(itemsArray));
-    const data = JSON.parse(localStorage.getItem('items'));
     
     // gets current date from Day.js and displays it
-    var todaysDate = dayjs().format('MMMM-D-YYYY');
+    var todaysDate = dayjs().format('ddd[, ]MMMM-D-YYYY[ at ]h:mm[ ]a');
     var displayDate = document.getElementById('currentDay');
     displayDate.innerHTML = todaysDate;
-    let currentHour = dayjs().format('HH');
+    let currentHour = dayjs().hour();
+
+    //compares each time slot's hour with current hour from Day.js
+    $(".time-div").each(function () {
+        var timeDiv = $(this).attr("id").split("-")[1];
+        
+        if (currentHour == timeDiv) {
+          $(this).addClass("present");
+          $(this).children(".description").addClass("white-text");
+        } else if (currentHour < timeDiv) {
+          $(this).removeClass("present");
+          $(this).addClass("future");
+        } else if (currentHour > timeDiv) {
+          $(this).removeClass("future");
+          $(this).addClass("past");
+        }
+      }); 
+
+    //reset button function to clear local storage and contents
+    $("#resetButton").click(function (event) {
+        event.preventDefault;
+        $("textarea").val("");
+        localStorage.clear();
+      });
 
     // adds listener for click events on save button, saves to local storage
     $(".saveBtn").click(function (event) {
