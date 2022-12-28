@@ -7,7 +7,7 @@ $(document).ready(function () {
     let currentHour = dayjs().hour();
 
     //compares each time slot's hour with current hour from Day.js
-    $(".time-div").each(function () {
+    $(".time-block").each(function () {
         var timeDiv = $(this).attr("id").split("-")[1];
         
         if (currentHour == timeDiv) {
@@ -32,9 +32,10 @@ $(document).ready(function () {
     // adds listener for click events on save button, saves to local storage
     $(".saveBtn").click(function (event) {
         event.preventDefault();
-        itemsArray.push(input.value);
-        localStorage.setItem('items', JSON.stringify(itemsArray));
-        console.log(itemsArray);
+        var value = $(this).siblings("textarea").val();
+        var time = $(this).parent().attr("id").split("-")[1];
+        localStorage.setItem(time, value);
+      });
         
     });
 
@@ -59,4 +60,4 @@ $(document).ready(function () {
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
-  });
+ 
