@@ -28,7 +28,7 @@ The application works as requested.
 
 ## Site Preview
 
-![Screenshot of the scheduling app deployed on GitHub Pages](./assets/images/workday-scheduler-screenshot.png)
+![Screenshot of the scheduling app deployed on GitHub Pages](/assets/images/workday-scheduler-screenshot.png)
 
 
 ## Usage
