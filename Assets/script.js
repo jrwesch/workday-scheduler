@@ -70,23 +70,11 @@ $(document).ready(function () {
       $("#hour-16 textarea").val(localStorage.getItem(["16"]));
       $("#hour-17 textarea").val(localStorage.getItem(["17"]));
 
-      //for (let i = 09; i < 17; i++) {
-       // $("#hour-[i] textarea").val(localStorage.getItem([i]));
-      //}
-      //$(".time-block").each(function () {
-        //var localStor = $(this).attr("id").split("-")[1];
-        
-            //for (let i = localStor; i < 17; i++)
-      //});  
+       
     });
 
 
    
 
-    //
-    // TODO: Add code to get any user input that was saved in localStorage and set
-    // the values of the corresponding textarea elements. HINT: How can the id
-    // attribute of each time-block be used to do this?
-    //
     
  
